@@ -48,7 +48,12 @@ class WishlistAPIView(generics.ListCreateAPIView, generics.DestroyAPIView):
         return WishlistItem.objects.filter(user=user)
 
     def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
+        wishlist_item_id = kwargs.get('wishlist_item_id')
+
+        if wishlist_item_id is not None:
+            return self.destroy(request, *args, **kwargs)
+        else:
+            return super().list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         product_id = request.data.get('product_id')

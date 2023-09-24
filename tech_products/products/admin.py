@@ -9,7 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class WishlistItemAdmin(admin.ModelAdmin):
-    list_display = ('user',)
+    list_display = ('user', 'product',)
 
 
 class LaptopSpecsAdmin(admin.ModelAdmin):
@@ -17,7 +17,7 @@ class LaptopSpecsAdmin(admin.ModelAdmin):
         'screen_resolution', 'screen_size', 'ssd', 'installed_ram', 'generation',
         'weight',
     )
-    list_filter = ('product__brand', )
+    list_filter = ('product__brand',)
     search_fields = (
         'screen_resolution', 'screen_size', 'ssd', 'installed_ram', 'generation', 'weight'
     )
@@ -26,7 +26,6 @@ class LaptopSpecsAdmin(admin.ModelAdmin):
 admin.site.register(WishlistItem, WishlistItemAdmin)
 admin.site.register(LaptopSpecs, LaptopSpecsAdmin)
 admin.site.register(Product, ProductAdmin)
-
 
 # Configure Admin Titles
 admin.site.site_header = 'Ecommerce Administration'

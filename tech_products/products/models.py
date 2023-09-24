@@ -3,10 +3,14 @@ from django.contrib.auth.models import User
 
 
 class Product(models.Model):
+    LAPTOP = 1
+    AIRPOD = 2
+
     PRODUCT_TYPES = [
-        (1, 'Airpods'),
-        (2, 'Laptop'),
+        (AIRPOD, 'Airpods'),
+        (LAPTOP, 'Laptop'),
     ]
+
     name = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     color = models.CharField(max_length=255)
@@ -21,7 +25,7 @@ class AirpodSpecs(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return str(self.product)
 
 
 class LaptopSpecs(models.Model):
@@ -34,7 +38,7 @@ class LaptopSpecs(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return str(self.product)
 
 
 class WishlistItem(models.Model):

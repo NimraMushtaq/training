@@ -139,5 +139,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 try:
     from techproducts.local import *
-except ImportError as e:
-    raise ImportError("Unable to import local settings. Please make sure that 'local.py' exists in your project.") from e
+except ImportError:
+    raise ImportError("Unable to import local settings. Please make sure that 'local.py' exists in your project.")
